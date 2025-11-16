@@ -1,15 +1,13 @@
-export default function Board() {
-    return(
-        <div className="grid grid-cols-3 grid-rows-3 gap-2">
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-            <span>GLORP</span>
-        </div>
-    )
+import Tile from './Tile'
+
+export default function Board({board}) {
+  return (
+    <div className="grid grid-cols-4 grid-rows-4 w-80">
+        {board.map((row, r) =>
+            row.map((value, c) => (
+                <Tile key={`${r}-${c}`} value={value} />
+            ))
+        )}
+    </div>
+  )
 }
