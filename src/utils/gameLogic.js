@@ -112,3 +112,13 @@ export function moveDown(board) { // Function that moves all the values in the b
     rotated = rotateCntrClockwise(rotated);
     return rotated;
 }
+
+export function getScore(board) { // Function that returns the score of the current board (sum of all the values)
+    let score = 0;
+    board.forEach((row, r) =>
+        row.forEach((val) => { // For each tile
+            score += val; // Add it's value to the overall score
+        })
+    );
+    return score;
+}
