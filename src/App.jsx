@@ -58,11 +58,21 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [board]);
 
+  const handleReplay = () => {
+    let newBoard = addRandomTile(emptyBoard());
+    newBoard = addRandomTile(newBoard);
+    setBoard(newBoard);
+    const newScore = getScore(newBoard);
+    setScore(newScore);
+    setMoves(0);
+  };
+
   return (
     <div> {/* Main container */}
       <Header/>
       <Board board={board}/>
       <Stats score={score} moves={moves} highScore={highScore}/>
+      <button onClick={handleReplay}>Replay</button>
     </div>
   )
 }
