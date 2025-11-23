@@ -4,12 +4,18 @@ import Board from "./components/Board"
 import Stats from "./components/Stats";
 import GameController from "./components/GameController";
 import {emptyBoard, addRandomTile, moveLeft, moveRight, moveUp, moveDown, boardsEqual, getScore} from "./utils/gameLogic"
+import Navbar from "./components/Navbar";
 
 export default function App() {
   const [board, setBoard] = useState(emptyBoard());
   const [score, setScore] = useState(getScore(board));
   const [moves, setMoves] = useState(0);
   const [highScore, setHighScore] = useState(getScore(board));
+  const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'limitless');
+
+  useEffect(() => {
+    localStorage.setItem('mode', mode);
+  }, [mode]);
 
   useEffect(() => { // Initialise the board with two random filled tiles
     let newBoard = addRandomTile([...board.map(r => [...r])]);
@@ -70,7 +76,7 @@ export default function App() {
 
   return (
     <div> {/* Main container */}
-      <Header/>
+      <Header mode={mode} setMode={setMode}/>
       <div className="grid grid-cols-3 place-items-center gap-8 mt-4">
         <Stats score={score} moves={moves} highScore={highScore}/>
         <Board board={board}/>
