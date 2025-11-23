@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import Header from "./components/Header"
 import Board from "./components/Board"
 import Stats from "./components/Stats";
+import GameController from "./components/GameController";
 import {emptyBoard, addRandomTile, moveLeft, moveRight, moveUp, moveDown, boardsEqual, getScore} from "./utils/gameLogic"
 
 export default function App() {
@@ -70,9 +71,11 @@ export default function App() {
   return (
     <div> {/* Main container */}
       <Header/>
-      <Board board={board}/>
-      <Stats score={score} moves={moves} highScore={highScore}/>
-      <button onClick={handleReplay}>Replay</button>
+      <div className="grid grid-cols-3">
+        <Stats score={score} moves={moves} highScore={highScore}/>
+        <Board board={board}/>
+        <GameController replay={handleReplay}/>
+      </div>
     </div>
   )
 }
