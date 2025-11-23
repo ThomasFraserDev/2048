@@ -71,11 +71,12 @@ export default function App() {
   return (
     <div> {/* Main container */}
       <Header/>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 place-items-center gap-8 mt-4">
         <Stats score={score} moves={moves} highScore={highScore}/>
         <Board board={board}/>
         <GameController replay={handleReplay}/>
       </div>
+      <p className="text-center mt-20 text-gray-400"> Use arrow keys to play</p>
     </div>
   )
 }
