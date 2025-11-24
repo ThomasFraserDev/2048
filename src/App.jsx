@@ -86,7 +86,7 @@ export default function App() {
     setScore(newScore);
     setMoves(0);
     setAvgScore(0);
-    setAvgVal(getAvgVal(board));
+    setAvgVal(0);
     setLastMove("");
     setLMScore(0);
   };
