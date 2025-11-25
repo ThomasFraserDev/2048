@@ -15,6 +15,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer utilities {
+  .theme-default .panel{
+    @apply bg-blue-950;
+  }
+
+  .theme-christmas .panel{
+    @apply bg-red-500;
+  }
+}
+
 a {
   font-weight: 500;
   color: #646cff;
