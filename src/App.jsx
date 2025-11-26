@@ -16,7 +16,7 @@ export default function App() {
   const [highestVal, setHighestVal] = useState(getHighestVal(board)); // Initialising highest value state
   const [highScore, setHighScore] = useState(getScore(board)); // Initialising high score state
   const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'limitless'); // Initialising mode state, set to limitless if none has been set
-  const [theme, setTheme] = useState("christmas")
+  const [theme, setTheme] = useState("default") // Initialise theme state
 
   useEffect(() => {
     localStorage.setItem('mode', mode);
@@ -93,14 +93,16 @@ export default function App() {
   };
 
   return (
-    <div> {/* Main container */}
+    <div className={`theme-${theme}`}> {/* Main container */}
+    <div className="main min-h-screen">
       <Header mode={mode} setMode={setMode}/>
-      <div className={`theme-${theme} grid grid-cols-3 place-items-center gap-8 mt-4`}>
+      <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
         <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore}/>
         <Board board={board}/>
-        <GameController replay={handleReplay}/>
+        <GameController replay={handleReplay} theme={setTheme}/>
       </div>
       <p className="text-center mt-20 text-gray-400">Use arrow keys to play</p>
+      </div>
     </div>
   )
 }
