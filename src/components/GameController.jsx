@@ -12,7 +12,7 @@ export default function GameController({replay, theme}) {
 
                 <div className="flex flex-row gap-2">
                     <button className="cursor-pointer" onClick={() => theme("christmas")}>Christmas</button>
-                    <span className="cursor-pointer w-8 h-8 border-2 border-black bg-red-700"/>
+                    <span onClick={() => theme("christmas")} className="cursor-pointer w-8 h-8 border-2 border-black bg-red-700"/>
                 </div>
 
             </div>

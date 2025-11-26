@@ -18,7 +18,7 @@ export default function App() {
   const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'limitless'); // Initialising mode state, set to limitless if none has been set
   const [theme, setTheme] = useState("default") // Initialise theme state
 
-  useEffect(() => {
+  useEffect(() => { // Store the selected mode in local storage
     localStorage.setItem('mode', mode);
   }, [mode]);
 
@@ -33,7 +33,6 @@ export default function App() {
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
         return;
       }
-      
       e.preventDefault();
       
       let newBoard;
@@ -64,7 +63,7 @@ export default function App() {
         const newScore = getScore(newBoard);
         setScore(newScore); // Update score
         setMoves(moves + 1); // Increment moves
-        setAvgScore((newScore / (moves + 1)).toFixed(2));
+        setAvgScore((newScore / (moves + 1)).toFixed(2)); // Calculate average score per move
         setAvgVal(getAvgVal(newBoard));
         setLMScore(getLMScore);
         setHighestVal(getHighestVal(newBoard));
@@ -73,12 +72,11 @@ export default function App() {
         }
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [board]);
 
-  const handleReplay = () => {
+  const handleReplay = () => { // Reset the board and relevant stats on replay
     resetScore();
     let newBoard = addRandomTile(emptyBoard());
     newBoard = addRandomTile(newBoard);
@@ -94,14 +92,14 @@ export default function App() {
 
   return (
     <div className={`theme-${theme}`}> {/* Main container */}
-    <div className="main min-h-screen">
-      <Header mode={mode} setMode={setMode}/>
-      <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
-        <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore}/>
-        <Board board={board}/>
-        <GameController replay={handleReplay} theme={setTheme}/>
-      </div>
-      <p className="text-center mt-20 text-gray-400">Use arrow keys to play</p>
+      <div className="main min-h-screen">
+        <Header mode={mode} setMode={setMode}/>
+        <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
+          <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore}/>
+          <Board board={board}/>
+          <GameController replay={handleReplay} theme={setTheme}/>
+        </div>
+        <p className="text-center mt-20 text-gray-400">Use arrow keys to play</p>
       </div>
     </div>
   )
