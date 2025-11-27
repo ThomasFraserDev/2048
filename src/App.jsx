@@ -16,11 +16,26 @@ export default function App() {
   const [highestVal, setHighestVal] = useState(getHighestVal(board)); // Initialising highest value state
   const [highScore, setHighScore] = useState(getScore(board)); // Initialising high score state
   const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'limitless'); // Initialising mode state, set to limitless if none has been set
+  const [timeRemaining, setTimeRemaining] = useState(60); // Initialising timer state 
+  const [gameOver, setGameOver] = useState(false); // Initialising game over state
   const [theme, setTheme] = useState("default") // Initialise theme state
 
-  useEffect(() => { // Store the selected mode in local storage
-    localStorage.setItem('mode', mode);
-  }, [mode]);
+  const moveLimit = 50; // Move limit for limited mode
+
+  useEffect(() => { // Timer setup for timed mode
+    if (mode === 'timed' && timeRemaining > 0 && !gameOver) {
+      const timer = setInterval(() => {
+        setTimeRemaining(prev => {
+          if (prev <= 1) {
+            setGameOver(true);
+            return 0;
+          }
+        return prev - 1;
+        });
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [mode, timeRemaining, gameOver]);
 
   useEffect(() => { // Initialise the board with two random filled tiles
     let newBoard = addRandomTile([...board.map(r => [...r])]);
@@ -29,6 +44,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (gameOver) {
+      return;
+    }
+
     const handleKeyDown = (e) => { // Only handle arrow keys
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
         return;
@@ -65,10 +84,13 @@ export default function App() {
         setMoves(moves + 1); // Increment moves
         setAvgScore((newScore / (moves + 1)).toFixed(2)); // Calculate average score per move
         setAvgVal(getAvgVal(newBoard));
-        setLMScore(getLMScore);
+        setLMScore(getLMScore());
         setHighestVal(getHighestVal(newBoard));
         if (newScore > highScore) {
           setHighScore(newScore); // Update high score if the current score is higher than the previous high score
+        }
+        if (mode === 'limited' && moves + 1 >= moveLimit) {
+          setGameOver(true);
         }
       }
     };
@@ -88,17 +110,41 @@ export default function App() {
     setAvgVal(0);
     setLastMove("");
     setLMScore(0);
+    setGameOver(false);
+    if (mode === 'timed') {
+      setTimeRemaining(60);
+    }
   };
+
+  const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+  useEffect(() => { // Store the selected mode in local storage and reset game on mode change
+    localStorage.setItem('mode', mode);
+    handleReplay();
+    if (mode === 'timed') {
+      setTimeRemaining(60);
+    }
+  }, [mode]);
 
   return (
     <div className={`theme-${theme}`}> {/* Main container */}
       <div className="main min-h-screen">
         <Header mode={mode} setMode={setMode}/>
         <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
-          <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore}/>
+          <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>
           <Board board={board}/>
           <GameController replay={handleReplay} theme={setTheme}/>
-        </div>
+          {mode === 'timed' && (
+                    <div className="flex justify-between">
+                        <span>Time:</span>
+                        <span className={timeRemaining <= 10 ? 'text-red-400' : ''}>{formatTime(timeRemaining)}</span>
+                    </div>
+                )}
+      </div>
         <p className="text-center mt-20 text-gray-400">Use arrow keys to play</p>
       </div>
     </div>

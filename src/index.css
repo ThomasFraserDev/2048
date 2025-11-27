@@ -29,9 +29,9 @@ body {
   z-index: -1;
 }
 
-/* -------------------- Default Theme -------------------- */
-
 @layer utilities {
+
+  /* -------------------- Default Theme -------------------- */
 
   .theme-default .main{
     @apply bg-black;

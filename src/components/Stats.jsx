@@ -1,4 +1,5 @@
-export default function Stats({score, moves, avgScore, avgVal, lastMove, lmScore, highestVal, highScore}) {
+export default function Stats({score, moves, avgScore, avgVal, lastMove, lmScore, highestVal, highScore, mode, moveLimit}) {
+
     return(
         <div className="panel flex flex-col w-100 h-120 rounded-2xl font-semibold">
             <h2 className="text-5xl text-center mt-5 mb-2">Stats</h2>
@@ -11,7 +12,7 @@ export default function Stats({score, moves, avgScore, avgVal, lastMove, lmScore
 
                 <div className="flex justify-between">
                     <span>Moves:</span>
-                    <span>{moves}</span>
+                    <span>{mode === 'limited' ? `${moves} / ${moveLimit}` : moves}</span>
                 </div>
 
                 <div className="flex justify-between">
