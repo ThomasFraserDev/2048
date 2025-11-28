@@ -138,14 +138,14 @@ export default function App() {
           <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>
           <Board board={board}/>
           <GameController replay={handleReplay} theme={setTheme}/>
-          {mode === 'timed' && (
-                    <div className="flex justify-between">
+      </div>
+      {mode === 'timed' && (
+                    <div className="flex justify-between ml-auto mr-auto mt-5 w-20 font-semibold">
                         <span>Time:</span>
                         <span className={timeRemaining <= 10 ? 'text-red-400' : ''}>{formatTime(timeRemaining)}</span>
                     </div>
                 )}
-      </div>
-        <p className="text-center mt-20 text-gray-400">Use arrow keys to play</p>
+        <p className="text-center mt-10 text-gray-400">Use arrow keys to play</p>
       </div>
     </div>
   )

@@ -1,11 +1,11 @@
-export default function Navbar({ mode, setMode }) {
-  const base = "nav-btn px-4 py-2 rounded-lg text-lg font-semibold cursor-pointer";
-  const selected = "nav-btn-selected";
+export default function Navbar({mode, setMode}) {
+  const base = "nav-btn px-4 py-2 rounded-lg text-lg font-semibold cursor-pointer"; // Base nav button styles
+  const selected = "nav-btn-selected"; // Selected nav button styles to be applied on click
 
   return (
     <nav className="w-full sticky top-0 z-40 px-4 py-3 my-4">
       <div className="w-full flex flex-row gap-4 items-center justify-between">
-        <div className="flex-1"></div>
+        <div className="flex-1"></div> {/* For justify-between spacing */}
 
         <div className="flex flex-row gap-3">
 
