@@ -1,6 +1,6 @@
 export default function Stats({score, moves, avgScore, avgVal, lastMove, lmScore, highestVal, highScore, mode, moveLimit}) {
     return(
-        <div className="panel flex flex-col w-100 h-120 rounded-2xl font-semibold text-shadow-lg">
+        <div className="panel flex flex-col w-100 h-120 rounded-2xl font-semibold">
             <h2 className="text-5xl text-center mt-5 mb-2">Stats</h2>
             <div className="flex flex-col text-3xl m-2 gap-3">
 
