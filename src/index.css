@@ -186,4 +186,88 @@ body {
   .theme-christmas .tile-131072{
     @apply bg-pink-500 text-white;
   }
+
+  /* -------------------- Tropical Theme -------------------- */
+
+  .theme-tropical .main{
+    @apply bg-linear-to-br from-purple-900 via-pink-900 to-rose-900;
+  }
+  .theme-tropical .nav-btn {
+    @apply bg-linear-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700;
+  }
+  .theme-tropical .nav-btn-selected {
+    @apply bg-linear-to-r from-yellow-400 to-orange-400 text-black hover:from-yellow-400 hover:to-orange-400;
+  }
+  .theme-tropical .panel{
+    @apply bg-linear-to-br from-indigo-900 to-purple-900;
+  }
+  .theme-tropical .btn{
+    @apply bg-linear-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white;
+  }
+
+  /* ---------- Tiles ---------- */
+
+  .theme-tropical .tile{
+    @apply border-purple-900;
+  }
+  .theme-tropical .tile-0{
+    @apply bg-linear-to-br from-gray-800 to-gray-900 text-gray-500;
+  }
+  .theme-tropical .tile-2{
+    @apply bg-linear-to-br from-red-400 to-orange-500 text-white;
+  }
+  .theme-tropical .tile-4{
+    @apply bg-linear-to-br from-orange-400 to-yellow-500 text-white;
+  }
+  .theme-tropical .tile-8{
+    @apply bg-linear-to-br from-yellow-400 to-lime-500 text-white;
+  }
+  .theme-tropical .tile-16{
+    @apply bg-linear-to-br from-lime-400 to-green-500 text-white;
+  }
+  .theme-tropical .tile-32{
+    @apply bg-linear-to-br from-green-400 to-emerald-500 text-white;
+  }
+  .theme-tropical .tile-64{
+    @apply bg-linear-to-br from-emerald-400 to-teal-500 text-white;
+  }
+  .theme-tropical .tile-128{
+    @apply bg-linear-to-br from-teal-400 to-cyan-500 text-white;
+  }
+  .theme-tropical .tile-256{
+    @apply bg-linear-to-br from-cyan-400 to-sky-500 text-white;
+  }
+  .theme-tropical .tile-512{
+    @apply bg-linear-to-br from-sky-400 to-blue-500 text-white;
+  }
+  .theme-tropical .tile-1024{
+    @apply bg-linear-to-br from-blue-400 to-indigo-500 text-white;
+  }
+  .theme-tropical .tile-2048{
+    @apply bg-linear-to-br from-indigo-400 to-purple-500 text-white;
+  }
+  .theme-tropical .tile-4096{
+    @apply bg-linear-to-br from-purple-400 to-fuchsia-500 text-white;
+  }
+  .theme-tropical .tile-8192{
+    @apply bg-linear-to-br from-fuchsia-400 to-pink-500 text-white;
+  }
+  .theme-tropical .tile-16384{
+    @apply bg-linear-to-br from-pink-400 to-rose-500 text-white;
+  }
+  .theme-tropical .tile-32768{
+    @apply bg-linear-to-br from-rose-400 to-red-600 text-white;
+  }
+  .theme-tropical .tile-65536{
+    @apply bg-linear-to-br from-orange-500 to-amber-600 text-white;
+  }
+  .theme-tropical .tile-131072{
+    @apply bg-linear-to-br from-yellow-500 to-orange-600 text-white;
+  }
+
+  /* -------------------- Christmas Theme -------------------- */
+
+  .modifier-spin .tile{
+    @apply animate-spin;
+  }
 }

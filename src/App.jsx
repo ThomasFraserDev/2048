@@ -19,6 +19,7 @@ export default function App() {
   const [timeRemaining, setTimeRemaining] = useState(60); // Initialising timer state 
   const [gameOver, setGameOver] = useState(false); // Initialising game over state
   const [theme, setTheme] = useState("default") // Initialise theme state
+  const [modifier, setModifier] = useState("default") // Initialise theme state
 
   const moveLimit = 50; // Move limit for limited mode
 
@@ -131,13 +132,13 @@ export default function App() {
   }, [mode]);
 
   return (
-    <div className={`theme-${theme}`}> {/* Main container */}
+    <div className={`theme-${theme} modifier-${modifier}`}> {/* Main container */}
       <div className="main min-h-screen">
         <Header mode={mode} setMode={setMode}/>
         <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
           <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>
           <Board board={board}/>
-          <GameController replay={handleReplay} theme={setTheme}/>
+          <GameController replay={handleReplay} theme={setTheme} modifier={setModifier}/>
       </div>
       {mode === 'timed' && (
                     <div className="flex justify-between ml-auto mr-auto mt-5 w-20 font-semibold">
