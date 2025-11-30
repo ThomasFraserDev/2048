@@ -20,6 +20,7 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false); // Initialising game over state
   const [theme, setTheme] = useState("default") // Initialise theme state
   const [modifier, setModifier] = useState("default") // Initialise theme state
+  const [mobileTab, setMobileTab] = useState("stats"); // Mobile tab state (stats or controls)
 
   const moveLimit = 50; // Move limit for limited mode
 
@@ -133,20 +134,41 @@ export default function App() {
 
   return (
     <div className={`theme-${theme} modifier-${modifier}`}> {/* Main container */}
-      <div className="main min-h-screen">
+      <div className="main min-h-screen px-2 sm:px-4 md:px-0">
         <Header mode={mode} setMode={setMode}/>
-        <div className={`grid grid-cols-3 place-items-center gap-8 mt-4`}>
+        
+        {/* Desktop Layout*/}
+        <div className="hidden lg:grid lg:grid-cols-3 place-items-center gap-8 mt-4 pb-6">
           <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>
           <Board board={board}/>
           <GameController replay={handleReplay} theme={setTheme} modifier={setModifier}/>
-      </div>
+        </div>
+
+        {/* Mobile/Layout*/}
+        <div className="lg:hidden flex flex-col items-center gap-4 mt-4 pb-6">
+          <Board board={board}/>
+          
+          <div className="flex gap-2 w-full max-w-md px-2">
+            <button onClick={() => setMobileTab("stats")} className={`flex-1 py-2 px-4 rounded-lg font-semibold transition-all cursor-pointer ${mobileTab === "stats" ? "nav-btn-selected" : "nav-btn"}`}>
+              Stats
+            </button>
+
+            <button onClick={() => setMobileTab("controls")} className={`flex-1 py-2 px-4 rounded-lg font-semibold transition-all cursor-pointer ${mobileTab === "controls" ? "nav-btn-selected" : "nav-btn"}`}>
+              Controls
+            </button>
+          </div>
+
+          <div className="w-full max-w-md px-2">
+            {mobileTab === "stats" ? (<Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>) : (<GameController replay={handleReplay} theme={setTheme} modifier={setModifier}/>)}
+          </div>
+        </div>
       {mode === 'timed' && (
-                    <div className="flex justify-between ml-auto mr-auto mt-5 w-20 font-semibold">
-                        <span>Time:</span>
-                        <span className={timeRemaining <= 10 ? 'text-red-400' : ''}>{formatTime(timeRemaining)}</span>
-                    </div>
-                )}
-        <p className="text-center mt-10 text-gray-400">Use arrow keys to play</p>
+        <div className="flex justify-between ml-auto mr-auto mt-3 sm:mt-4 md:mt-5 w-16 sm:w-18 md:w-20 font-semibold text-sm sm:text-base">
+            <span>Time:</span>
+            <span className={timeRemaining <= 10 ? 'text-red-400' : ''}>{formatTime(timeRemaining)}</span>
+        </div>
+      )}
+        <p className="text-center mt-6 sm:mt-8 md:mt-10 text-sm sm:text-base text-gray-400 pb-4">Use arrow keys to play</p>
       </div>
     </div>
   )
