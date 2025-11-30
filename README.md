@@ -35,7 +35,7 @@ An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Fea
 ### Themes
 - Default
 - Christmas
-- **Tropical**
+- Tropical
 
 ### Modifiers
 - Default
