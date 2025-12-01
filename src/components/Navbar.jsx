@@ -24,10 +24,10 @@ export default function Navbar({mode, setMode}) {
         </div>
 
         <div className="flex-1 flex items-center justify-center sm:justify-end gap-3 sm:gap-4 md:gap-5 sm:mr-4">
-          <a href="https://github.com/TheRealThomasFraser">
+          <a href="https://github.com/ThomasFraserDev">
             <img className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" src="/assets/github-mark-white.png"/>
           </a>
-          <a href="https://x.com/ThomasFDev">
+          <a href="https://x.com/ThomasFraserDev">
             <img className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" src="/assets/twitterLogo.png"/>
           </a>
         </div>
