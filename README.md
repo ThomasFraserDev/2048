@@ -65,7 +65,7 @@ An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Fea
   
 ### Run Locally
 ```bash
-git clone https://github.com/TheRealThomasFraser/2048.git
+git clone https://github.com/ThomasFraserDev/2048.git
 cd 2048
 npm install
 npm run dev
