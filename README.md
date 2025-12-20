@@ -7,7 +7,7 @@
 
 An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Features multiple game modes, themes, modifiers and advanced stats.
 
-## 🖼️ Screenshots
+## Screenshots
 <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
 
 <img width="500" alt="Tropical theme limitless screenshot" src="https://github.com/user-attachments/assets/3bf551db-17c1-43cd-bbb1-c6dcb951ad8c" />
@@ -17,7 +17,7 @@ An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Fea
 <img width="500" alt="Default theme timed screenshot" src="https://github.com/user-attachments/assets/e4ac577a-35d1-4b09-bbab-17fb66478bb5" />
 </div>
 
-## 🕹️ Game Flow
+## Game Flow
 
 
 1. Use the arrow keys to shift the tiles on the board
@@ -25,7 +25,7 @@ An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Fea
 3. After each move, a new 2 or 4 value tile will randomly appear on the board
 4. Aim to reach the highest score as possible!
 
-## 🌐 Features
+## Features
 
 ### Game Modes
 - **Limitless Mode** - Aim for the highest score, with infinite moves and time
@@ -52,12 +52,12 @@ An implementation of the 2048 game, built with React, Vite and Tailwind CSS. Fea
 - Best Tile
 - Highest Score
 
-## 🚧 Upcoming Features
+## Upcoming Features
 
 - More themes
 - More modifiers
 
-## 🧰 Download and Run
+## Download and Run
 
 ### Prerequisites
 
@@ -71,6 +71,6 @@ npm install
 npm run dev
 ```
 
-## 🪙 License
+## License
 
 This software is licensed under the MIT license.
