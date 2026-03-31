@@ -265,6 +265,84 @@ body {
     @apply bg-linear-to-br from-yellow-500 to-orange-600 text-white;
   }
 
+  /* -------------------- Spring Theme -------------------- */
+
+  .theme-spring .main{
+    @apply bg-linear-to-br from-green-200 to-emerald-300 text-gray-900;
+  }
+  .theme-spring .nav-btn {
+    @apply bg-linear-to-br from-green-300 to-green-400 text-gray-800 hover:from-green-400 hover:to-green-500;
+  }
+  .theme-spring .nav-btn-selected {
+    @apply bg-linear-to-br from-pink-300 to-pink-400 text-white hover:from-pink-400 hover:to-pink-500;
+  }
+  .theme-spring .panel{
+    @apply bg-linear-to-br from-blue-200 to-cyan-200;
+  }
+  .theme-spring .btn{
+    @apply bg-linear-to-br from-pink-300 to-pink-400 hover:from-pink-400 hover:to-pink-500 text-white;
+  }
+
+  /* ---------- Tiles ---------- */
+
+  .theme-spring .tile{
+    @apply border-green-400;
+  }
+  .theme-spring .tile-0{
+    @apply bg-linear-to-br from-gray-200 to-gray-300 text-gray-600;
+  }
+  .theme-spring .tile-2{
+    @apply bg-linear-to-br from-pink-200 to-pink-300 text-gray-800;
+  }
+  .theme-spring .tile-4{
+    @apply bg-linear-to-br from-pink-300 to-pink-400 text-white;
+  }
+  .theme-spring .tile-8{
+    @apply bg-linear-to-br from-pink-400 to-rose-300 text-white;
+  }
+  .theme-spring .tile-16{
+    @apply bg-linear-to-br from-rose-300 to-rose-400 text-white;
+  }
+  .theme-spring .tile-32{
+    @apply bg-linear-to-br from-rose-400 to-red-300 text-white;
+  }
+  .theme-spring .tile-64{
+    @apply bg-linear-to-br from-red-300 to-red-400 text-white;
+  }
+  .theme-spring .tile-128{
+    @apply bg-linear-to-br from-red-400 to-orange-300 text-white;
+  }
+  .theme-spring .tile-256{
+    @apply bg-linear-to-br from-orange-300 to-orange-400 text-white;
+  }
+  .theme-spring .tile-512{
+    @apply bg-linear-to-br from-orange-400 to-yellow-300 text-gray-900;
+  }
+  .theme-spring .tile-1024{
+    @apply bg-linear-to-br from-yellow-300 to-yellow-400 text-gray-900;
+  }
+  .theme-spring .tile-2048{
+    @apply bg-linear-to-br from-yellow-400 to-lime-300 text-gray-900;
+  }
+  .theme-spring .tile-4096{
+    @apply bg-linear-to-br from-lime-300 to-lime-400 text-white;
+  }
+  .theme-spring .tile-8192{
+    @apply bg-linear-to-br from-lime-400 to-green-300 text-white;
+  }
+  .theme-spring .tile-16384{
+    @apply bg-linear-to-br from-green-300 to-green-400 text-white;
+  }
+  .theme-spring .tile-32768{
+    @apply bg-linear-to-br from-green-400 to-emerald-300 text-white;
+  }
+  .theme-spring .tile-65536{
+    @apply bg-linear-to-br from-emerald-300 to-emerald-400 text-white;
+  }
+  .theme-spring .tile-131072{
+    @apply bg-linear-to-br from-emerald-400 to-teal-300 text-white;
+  }
+
   /* -------------------- Modifiers -------------------- */
 
   .modifier-spin .tile{

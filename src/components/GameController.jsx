@@ -25,6 +25,11 @@ export default function GameController({replay, theme, modifier}) {
                             Tropical
                         </button>
 
+                        <button onClick={() => theme("spring")} className="btn px-6 py-2 lg:px-6 lg:py-2 rounded-lg cursor-pointer hover:scale-105 transition-transform flex items-center gap-2 text-base">
+                            <span className="w-5 h-5 lg:w-6 lg:h-6 rounded border-2 border-white/50 bg-linear-to-br from-green-200 to-pink-200"/>
+                            Spring
+                        </button>
+
                     </div>
 
                 </div>
@@ -44,6 +49,10 @@ export default function GameController({replay, theme, modifier}) {
 
                         <button onClick={() => modifier("upside-down")} className="btn px-6 py-2 lg:px-6 lg:py-2 rounded-lg cursor-pointer hover:scale-105 transition-transform text-base">
                             Upside Down
+                        </button>
+
+                        <button onClick={() => modifier("invisible")} className="btn px-6 py-2 lg:px-6 lg:py-2 rounded-lg cursor-pointer hover:scale-105 transition-transform text-base">
+                            Invisible Numbers
                         </button>
 
                     </div>

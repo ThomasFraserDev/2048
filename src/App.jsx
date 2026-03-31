@@ -140,7 +140,7 @@ export default function App() {
         {/* Desktop Layout*/}
         <div className="hidden lg:grid lg:grid-cols-3 place-items-center gap-8 mt-4 pb-6">
           <Stats score={score} moves={moves} avgScore={avgScore} avgVal={avgVal} lastMove={lastMove} lmScore={lmScore} highestVal={highestVal} highScore={highScore} mode={mode} moveLimit={moveLimit}/>
-          <Board board={board}/>
+          <Board board={board} modifier={modifier}/>
           <GameController replay={handleReplay} theme={setTheme} modifier={setModifier}/>
         </div>
 
