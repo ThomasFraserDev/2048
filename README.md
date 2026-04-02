@@ -33,11 +33,13 @@ An implementation of the 2048 game, with more in depth stats and modes/modifiers
 - Default
 - Christmas
 - Tropical
+- Spring
 
 ### Modifiers
 - Default
 - Spin To Win
 - Upside Down
+- Invisible Numbers
 
 ### Stats
 - Score

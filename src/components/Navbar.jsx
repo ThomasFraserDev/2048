@@ -5,19 +5,19 @@ export default function Navbar({mode, setMode}) {
   return (
     <nav className="w-full sticky top-0 z-40 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 my-2 sm:my-3 md:my-4">
       <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-between">
-        <div className="hidden sm:flex flex-1"></div> {/* For justify-between spacing */}
+        <div className="hidden sm:flex flex-1"></div>
 
         <div className="flex flex-row gap-2 sm:gap-3">
 
-          <button onClick={() => setMode('limitless')} className={`${base} ${mode === 'limitless' && selected}`}>
+          <button onClick={() => setMode('limitless')} className={`${base} ${mode === 'limitless' && selected} transform hover:scale-105`}>
             Limitless
           </button>
 
-          <button onClick={() => setMode('limited')} className={`${base} ${mode === 'limited' && selected}`}>
+          <button onClick={() => setMode('limited')} className={`${base} ${mode === 'limited' && selected} transform hover:scale-105`}>
             Limited
           </button>
 
-          <button onClick={() => setMode('timed')} className={`${base} ${mode === 'timed' && selected}`}>
+          <button onClick={() => setMode('timed')} className={`${base} ${mode === 'timed' && selected} transform hover:scale-105`}>
             Timed
           </button>
 
