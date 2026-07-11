@@ -55,6 +55,14 @@ export default function GameController({replay, theme, modifier}) {
                             Invisible Numbers
                         </button>
 
+                        <button onClick={() => modifier("bigBoard")} className="btn px-6 py-2 lg:px-6 lg:py-2 rounded-lg cursor-pointer hover:scale-105 transition-transform text-base">
+                            Big Board
+                        </button>
+
+                        <button onClick={() => modifier("smallBoard")} className="btn px-6 py-2 lg:px-6 lg:py-2 rounded-lg cursor-pointer hover:scale-105 transition-transform text-base">
+                            Small board
+                        </button>
+
                     </div>
 
                 </div>

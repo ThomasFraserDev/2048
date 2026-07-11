@@ -4,13 +4,8 @@ let highestVal = 0; // Initialising the highest value
 
 // -------------------- Board Management --------------------
 
-export function emptyBoard() { // Function that creates an empty board, with empty tiles reprsented by 0
-    return [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]
-    ];
+export function emptyBoard(size = 4) { // Function that creates an empty board, with empty tiles reprsented by 0
+    return Array.from({ length: size }, () => Array(size).fill(0));
 }
 
 export function addRandomTile(board) { // Funtion that adds either 2 or 4 to an empty tile on the board
@@ -82,7 +77,7 @@ function slideRow(row) { // Function that slides the values within a row to the 
         }
     }
     
-    while (newRow.length < 4) { // Fill any remaining spaces in the new row with empty tiles
+    while (newRow.length < row.length) { // Fill any remaining spaces in the new row with empty tiles
         newRow.push(0);
     }
     return newRow;

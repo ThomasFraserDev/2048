@@ -6,7 +6,12 @@ import GameController from "./components/GameController";
 import {emptyBoard, addRandomTile, moveLeft, moveRight, moveUp, moveDown, boardsEqual, getScore, resetScore, getAvgVal, getLMScore, getHighestVal} from "./utils/gameLogic"
 
 export default function App() {
-  const [board, setBoard] = useState(emptyBoard()); // Initialising board state
+  const [board, setBoard] = useState(() => {
+    let initialBoard = emptyBoard(4);
+    initialBoard = addRandomTile(initialBoard);
+    initialBoard = addRandomTile(initialBoard);
+    return initialBoard;
+  }); // Initialising board state
   const [score, setScore] = useState(getScore(board)); // Initialising score state
   const [moves, setMoves] = useState(0); // Initialising moves state
   const [avgScore, setAvgScore] = useState(0); // Initialising average score state
@@ -21,6 +26,7 @@ export default function App() {
   const [theme, setTheme] = useState("default") // Initialise theme state
   const [modifier, setModifier] = useState("default") // Initialise theme state
   const [mobileTab, setMobileTab] = useState("stats"); // Mobile tab state (stats or controls)
+  const boardSize = modifier === "bigBoard" ? 8 : ( modifier === "smallBoard" ? 3 : 4);
 
   const moveLimit = 50; // Move limit for limited mode
 
@@ -38,12 +44,6 @@ export default function App() {
       return () => clearInterval(timer);
     }
   }, [mode, timeRemaining, gameOver]);
-
-  useEffect(() => { // Initialise the board with two random filled tiles
-    let newBoard = addRandomTile([...board.map(r => [...r])]);
-    newBoard = addRandomTile([...newBoard.map(r => [...r])]);
-    setBoard(newBoard);
-  }, []);
 
   useEffect(() => {
     if (gameOver) {
@@ -102,7 +102,7 @@ export default function App() {
 
   const handleReplay = () => { // Reset the board and relevant stats on replay
     resetScore();
-    let newBoard = addRandomTile(emptyBoard());
+    let newBoard = addRandomTile(emptyBoard(boardSize));
     newBoard = addRandomTile(newBoard);
     setBoard(newBoard);
     const newScore = getScore(newBoard);
@@ -132,6 +132,10 @@ export default function App() {
     }
   }, [mode]);
 
+  useEffect(() => { // Reset the board when board size modifier changes
+    handleReplay();
+  }, [boardSize]);
+
   return (
     <div className={`theme-${theme} modifier-${modifier}`}> {/* Main container */}
       <div className="main min-h-screen px-2 sm:px-4 md:px-0">
@@ -146,7 +150,7 @@ export default function App() {
 
         {/* Mobile/Layout*/}
         <div className="lg:hidden flex flex-col items-center gap-4 mt-4 pb-6">
-          <Board board={board}/>
+          <Board board={board} modifier={modifier}/>
           
           <div className="flex gap-2 w-full max-w-md px-2">
             <button onClick={() => setMobileTab("stats")} className={`flex-1 py-2 px-4 rounded-lg font-semibold transition-all cursor-pointer ${mobileTab === "stats" ? "nav-btn-selected" : "nav-btn"}`}>
