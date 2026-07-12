@@ -40,6 +40,8 @@ An implementation of the 2048 game, with more in depth stats and modes/modifiers
 - Spin To Win
 - Upside Down
 - Invisible Numbers
+- Bigger board
+- Small board
 
 ### Stats
 - Score
